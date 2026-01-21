@@ -1,0 +1,24 @@
+{
+    "name": "collaborative-canvas",
+    "version": "1.0.0",
+    "description": "Real-time collaborative drawing canvas application",
+    "main": "index.js",
+    "scripts": {
+        "install:all": "npm install && cd client && npm install && cd ../server && npm install && cd ..",
+        "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\"",
+        "build": "cd client && npm run build && cd ../server && npm run build",
+        "start": "cd server && npm start"
+    },
+    "keywords": [
+        "collaborative",
+        "canvas",
+        "drawing",
+        "realtime",
+        "websocket"
+    ],
+    "author": "Collaborative Canvas Team",
+    "license": "MIT",
+    "devDependencies": {
+        "concurrently": "^9.1.0"
+    }
+}
