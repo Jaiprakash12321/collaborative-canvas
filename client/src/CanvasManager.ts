@@ -157,28 +157,28 @@ export class CanvasManager {
      * Smooth a path by interpolating between points
      * Reduces jank and improves visual quality
      */
-    private smoothPath(points: Point[], tension: number = 0.5): Point[] {
-        if (points.length <= 2) return points;
+    // private smoothPath(points: Point[], tension: number = 0.5): Point[] {
+    //     if (points.length <= 2) return points;
 
-        const smoothed: Point[] = [points[0]];
+    //     const smoothed: Point[] = [points[0]];
 
-        for (let i = 1; i < points.length; i++) {
-            const p0 = points[i - 1];
-            const p1 = points[i];
-            const p2 = i + 1 < points.length ? points[i + 1] : points[i];
-            const p3 = i + 2 < points.length ? points[i + 2] : points[i];
+    //     for (let i = 1; i < points.length; i++) {
+    //         const p0 = points[i - 1];
+    //         const p1 = points[i];
+    //         const p2 = i + 1 < points.length ? points[i + 1] : points[i];
+    //         const p3 = i + 2 < points.length ? points[i + 2] : points[i];
 
-            // Add interpolated points
-            for (let t = 0; t < 1; t += 0.3) {
-                const x = this.catmullRom(p0.x, p1.x, p2.x, p3.x, t, tension);
-                const y = this.catmullRom(p0.y, p1.y, p2.y, p3.y, t, tension);
-                smoothed.push({ x, y });
-            }
-        }
+    //         // Add interpolated points
+    //         for (let t = 0; t < 1; t += 0.3) {
+    //             const x = this.catmullRom(p0.x, p1.x, p2.x, p3.x, t, tension);
+    //             const y = this.catmullRom(p0.y, p1.y, p2.y, p3.y, t, tension);
+    //             smoothed.push({ x, y });
+    //         }
+    //     }
 
-        smoothed.push(points[points.length - 1]);
-        return smoothed;
-    }
+    //     smoothed.push(points[points.length - 1]);
+    //     return smoothed;
+    // }
 
     /**
      * Catmull-Rom spline interpolation for smooth curves

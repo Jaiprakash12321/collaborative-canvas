@@ -1,7 +1,6 @@
 /**
  * SocketManager: WebSocket client for communicating with server
- * 
- * Handles:
+ * * Handles:
  * - Connection lifecycle
  * - Real-time drawing events
  * - Cursor tracking
@@ -27,7 +26,11 @@ export class SocketManager {
 
     constructor() {
         // Connect to backend server
-        const serverUrl = import.meta.env.PROD ? '/' : 'http://localhost:3000';
+        // CRITICAL FIX: Use the environment variable we set in Vercel
+        const serverUrl = import.meta.env.VITE_SERVER_URL || 'http://localhost:3000';
+
+        console.log("Connecting to server:", serverUrl); // Helpful for debugging
+
         this.socket = io(serverUrl, {
             transports: ['websocket', 'polling'],
             reconnectionDelay: 1000,
@@ -137,7 +140,8 @@ export class SocketManager {
      * Emit undo
      */
     emitUndo(): void {
-        this.socket.emit('undo', (history?: DrawingAction[]) => {
+        // FIX: Removed unused 'history' parameter
+        this.socket.emit('undo', () => {
             console.log(`↩️ Undo executed`);
         });
     }
@@ -146,7 +150,8 @@ export class SocketManager {
      * Emit redo
      */
     emitRedo(): void {
-        this.socket.emit('redo', (history?: DrawingAction[]) => {
+        // FIX: Removed unused 'history' parameter
+        this.socket.emit('redo', () => {
             console.log(`↪️ Redo executed`);
         });
     }
