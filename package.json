@@ -20,5 +20,12 @@
     "license": "MIT",
     "devDependencies": {
         "concurrently": "^9.1.0"
+    },
+    "dependencies": {
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.6",
+        "@types/node": "^25.0.9",
+        "@types/socket.io": "^3.0.1",
+        "typescript": "^5.9.3"
     }
 }
